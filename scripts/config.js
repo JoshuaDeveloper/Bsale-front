@@ -1,1 +1,1 @@
-export const BASE_URI = "https://bsale-api-ecommerce.herokuapp.com";
+export const BASE_URI = "https://bsale-ecommerce-api.herokuapp.com";
