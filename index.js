@@ -12,10 +12,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     await getProductsAll();
     listProductsByCategory();
     listProductsBySearch();
+    navbarMenu();
   } catch (error) {
     console.log(error);
   }
 });
+
+function navbarMenu() {
+  const $navbarBurgers = Array.prototype.slice.call(
+    document.querySelectorAll(".navbar-burger"),
+    0
+  );
+
+  $navbarBurgers.forEach((el) => {
+    el.addEventListener("click", () => {
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+      const $navbarMenu = document.querySelector(".navbar-menu");
+
+      $navbarMenu.classList.toggle("is-active");
+      el.classList.toggle("is-active");
+      $target.classList.toggle("is-active");
+    });
+  });
+}
 
 async function getProductsAll() {
   const products = await getProducts();
@@ -32,7 +52,7 @@ function listProducts(products) {
       product.url_image = "https://via.placeholder.com/150";
     }
     div.innerHTML = `
-      <div class="card card-size">
+      <div class="card card-size pt-5">
         <div class="card-image">
           <figure class="image is-128x128">
             <img src="${product.url_image}" alt="${product.name}">
