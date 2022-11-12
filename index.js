@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
+// convert three lines to x lines
+// show navbar menu on mobile
 function navbarMenu() {
   const $navbarBurgers = Array.prototype.slice.call(
     document.querySelectorAll(".navbar-burger"),
@@ -37,11 +39,13 @@ function navbarMenu() {
   });
 }
 
+// get all products
 async function getProductsAll() {
   const products = await getProducts();
   listProducts(products);
 }
 
+// list products
 function listProducts(products) {
   productsList.innerHTML = "";
   products.forEach((product) => {
@@ -67,7 +71,7 @@ function listProducts(products) {
         </div> 
         <footer class="card-footer">
           <p class="card-footer-item is-6"> $${product.price}</p>   
-          <a href="#" class="card-footer-item is-6">Agregar</a>
+          <a href="#" class="card-footer-item is-6">Proximamente</a>
         </footer> 
       </div>
     `;
@@ -75,6 +79,7 @@ function listProducts(products) {
   });
 }
 
+// list products by category
 function listProductsByCategory() {
   const categoryButton = document.querySelectorAll(".category");
   categoryButton.forEach((button) => {
@@ -87,6 +92,7 @@ function listProductsByCategory() {
   });
 }
 
+// list products by search
 function listProductsBySearch() {
   searchForm.addEventListener("keyup", async (e) => {
     e.preventDefault();
